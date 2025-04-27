@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+</head>
+<body>
+    <main class="container-main">{% block content %} {% endblock %}</main>
+    <script>
+      const burguer = document.getElementById("burguer");
+      const navbar = document.getElementById("nav");
+      function toggleActive() {
+        navbar.classList.toggle("active");
+        burguer.classList.toggle("active");
+      }
+      
+      burguer.addEventListener("click", () => togleActive());
+    </script>
+</body>
+</html>

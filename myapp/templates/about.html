@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+  </head>
+  <body>
+    {% extends 'layouts/base.html' %} {% block content %}
+
+    <h1 class="title">About App Django</h1>
+    <p class="text-common">
+    todo list.
+    </p>
+
+    <p class="text-common">
+      Website created by: <strong>{{ username }}</strong>
+    </p>
+    {% endblock %}
+  </body>
+</html>

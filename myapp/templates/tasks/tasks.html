@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks</title>
+</head>
+
+<body>
+  {% extends 'layouts/base.html' %} {% block content %}
+  <h1 class="title">Tasks</h1>
+  {% for project in projects %}
+  <h2 class="title">{{ project }}</h2>
+  <ul class="task-list">
+    {% for t in task%}
+    {% if t.project_id == project.id %}
+    <li>
+      <strong>
+        {% if t.done == False%} ⏱ {% else %} ✅ {% endif %}{{t.title}}
+      </strong>
+      {% if t.done == False %}
+      <p>Task pending</p>
+      {% else %}
+      <p>Task done</p>
+      {% endif %}
+
+      <p><em>{{t.description}}</em></p>
+      {% if t.important %}
+      <p>Important task</p>
+      {% else %}
+      <p>Normal task</p>
+      {% endif %}
+      <button><a href="{% url 'taskdetail' t.id %}">Update</a></button>
+      <button><a href="{% url 'deletetask' t.id %}">Delete</a></button>
+      {% if t.done == True %}
+      <p>Good job! </p>
+      <p><strong>Task done at:</strong> {{t.datecompleted}}</p>
+      <!-- <p><strong>Task done at:</strong> {{t.datecompleted|date:'M j Y:i'}}</p> -->
+      {% else %}
+      <button><a href="{% url 'donetask' t.id %}"> Done</a></button>
+      {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  
+  {% endfor %}
+  {% endblock %}
+</body>
+
+</html>

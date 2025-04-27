@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    {% extends 'layouts/base.html' %} {% block content %}
+
+    <form method="POST" class="form">
+        <h1 class="title"> Login </h1>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <p class="card__title"> {{ error }} </p>
+        <article>
+            <button type="submit" class="save">
+                Submit
+            </button>
+            <span class="midtext"> or you can</span>
+            <a href="{% url 'signup' %}">
+                <button type="button" class="save">
+                    Sign up
+                </button>
+            </a>
+        </article>
+    </form>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block content %}
+
+<h1 class="title">{{ title }}</h1>
+
+<figure class="logo-container">
+  <img
+    src="{% static 'django.png' %}"
+    alt="django loco"
+    class="logo"
+    width="100"
+  />
+</figure>
+
+<p class="django-presentation">
+  todo liste with django created by khouloud lazreg
+</p>
+
+{% endblock %}

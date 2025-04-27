@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+</head>
+<body>
+    {% extends 'layouts/base.html' %} {% block content%}
+    <!--
+    <form method="POST" class="form">
+        <h1 class="title">Register</h1>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <p class="card__title"> {{ error }} </p>
+        <article>
+            
+            <button type="submit" class="save">
+                Submit
+            </button>
+            <span class="midtext">or</span>
+            <a href="{% url 'login' %}">
+                <button type="button" class="save">
+                Login
+                </button>
+            </a>
+            
+        </article>
+    </form>-->
+    <form method="POST" class="form">
+        <h1 class="title">Register</h1>
+        {% csrf_token %}
+    
+        <!-- Champ pour le nom d'utilisateur -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="label">Nom d'utilisateur</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div class="error">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+        <br>
+        <!-- Champ pour le mot de passe -->
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}" class="label">Mot de passe</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <div class="error">{{ form.password1.errors }}</div>
+            {% endif %}
+        </div>
+       <br>
+        <!-- Champ pour confirmer le mot de passe -->
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="label">Confirmer le mot de passe</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <div class="error">{{ form.password2.errors }}</div>
+            {% endif %}
+        </div>
+    
+        <!-- Affichage des erreurs générales -->
+        {% if error %}
+            <p class="card__title">{{ error }}</p>
+        {% endif %}
+    
+        <article>
+            <!-- Bouton de soumission -->
+            <button type="submit" class="save">
+                Submit
+            </button>
+    
+            <span class="midtext">ou</span>
+    
+            <!-- Lien vers la page de connexion -->
+            <a href="{% url 'login' %}" class="login-link">
+                <button type="button" class="save">
+                    Login
+                </button>
+            </a>
+        </article>
+    </form>
+    
+    {% endblock %}
+    
+</body>
+</html>

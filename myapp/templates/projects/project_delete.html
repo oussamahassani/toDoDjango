@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation delete</title>
+</head>
+<body>
+    {% extends 'layouts/base.html' %} {% block content%}
+    <main class="project-container">    
+            <h1 class="card__title"> Are you sure you want delete it? </h1> 
+        <a class="save" href="{% url 'projectdeleteconfirm' project_id.id %}">Yes</a>
+        <a class="save" href="{% url 'projects' %}">Nope</a>
+    </main>
+    <h1 class="title"> Following tasks will be removed</h1>
+    <div class="tasks">
+        {% for t in tasks %}
+        <div class="tasks__card">
+          {% if t.done == True %}
+          <h2 class="tasks__title">{{t.title}} ✅</h2>
+          {% else %}
+          <h2 class="tasks__title">{{t.title}} ⏱</h2>
+          {% endif %}
+        </div>
+        {% endfor %} 
+      </div>
+
+    {% endblock %}
+</body>
+</html>
